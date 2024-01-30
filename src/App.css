@@ -1,0 +1,7 @@
+#my3D{
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'flex-start';
+    height: '100vh';
+    background-color: aqua;
+}

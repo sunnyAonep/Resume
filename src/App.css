@@ -1,7 +1,27 @@
-#my3D{
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'flex-start';
-    height: '100vh';
-    background-color: aqua;
-}
+#myResumeFormPage {
+    background-color: black;
+    position: relative;
+    width: 100%;
+    height: 86vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+  
+  #ResumeForm {
+    width: 100%; 
+    height: 65vh;
+    margin-right: 3.5rem;
+    background-color: rgb(94, 27, 77); 
+    opacity: 85%;
+    border-radius: 10px; 
+    padding: 15px; 
+  }
+  
+  .my3D {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(0, 0, 0); 
+    border-radius: 10px;
+  }
+   

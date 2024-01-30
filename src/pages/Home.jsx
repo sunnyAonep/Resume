@@ -6,7 +6,7 @@ export default function Home() {
     <div id='homePage'>
       <h1>welcome</h1>
       <div id = "my3D">
-        <h1>bye</h1>
+      <Spline scene="https://prod.spline.design/XtCUFy4p8x78CWQT/scene.splinecode" />
       </div>
     </div>
   )

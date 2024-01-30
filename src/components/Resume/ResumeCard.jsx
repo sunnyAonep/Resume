@@ -13,7 +13,6 @@ export default function ResumeCard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('ResumeCard useEffect');
     const fetchDataFromFirestore = async () => {
       try {
         const q = query(collection(db, 'resume'), where('idUser', '==', user.uid));

@@ -15,6 +15,7 @@ export default function UserProvider({ children }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [resumeForms, setResumeForms] = useState([]);
+  const [adminIsIn , setadminIsIn] = useState(false)
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -56,18 +57,30 @@ export default function UserProvider({ children }) {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
+  const adminUser = (userState)=>{
+    if (userState === "s7g81QYG40XqmWtBSSlFSX1u7CG2") {
+      setadminIsIn(true)
+    }
+    else{
+      setadminIsIn(false)
+    }
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userState) => {
       if (userState) {
         setUser(userState);
         takeUserResumes(userState.uid);
+        adminUser(userState.uid)
       } else {
         setUser(null);
         setResumeForms([]);
+        setadminIsIn(false)
       }
     });
     return () => unsubscribe();
   }, []);
+  console.log(adminIsIn);
+  
 
   const takeUserResumes = async (userId) => {
     if (userId) {
@@ -90,6 +103,7 @@ export default function UserProvider({ children }) {
     user,
     handleSignOut,
     resumeForms,
+    adminIsIn
   };
 
   return <userContext.Provider value={shared}>{children}</userContext.Provider>;

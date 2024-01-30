@@ -6,12 +6,25 @@ import { userContext } from "../../context/UserProvider";
 import WorkFormat from "./WorkFormat";
 import EduFormat from "./EduFormat";
 import PersonalFormay from "./PersonalFormay";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function ResumeCard() {
   const { user } = useContext(userContext);
   const [formsFromData, setFormsFromData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const downloadPDF = () =>{
+    const capture = document.querySelector(".resume-card")
+    html2canvas(capture).then((canvas)=>{
+      const imgData = canvas.toDataURL("img/png")
+      const doc = new jsPDF('p', 'mm', 'a4');
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      doc.save('receipt.pdf');
+    })
+  }
   useEffect(() => {
     const fetchDataFromFirestore = async () => {
       try {
@@ -62,6 +75,7 @@ export default function ResumeCard() {
                     ))}
                   </div>
                 )}
+                <button onClick={downloadPDF}>Download</button>
               </div>
             ))
           ) : (

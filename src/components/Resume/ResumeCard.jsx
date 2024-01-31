@@ -14,17 +14,18 @@ export default function ResumeCard() {
   const [formsFromData, setFormsFromData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const downloadPDF = () =>{
-    const capture = document.querySelector(".resume-card")
-    html2canvas(capture).then((canvas)=>{
-      const imgData = canvas.toDataURL("img/png")
+  const downloadPDF = () => {
+    const capture = document.querySelector(".resume-card");
+    html2canvas(capture).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
       const doc = new jsPDF('p', 'mm', 'a4');
-      const componentWidth = doc.internal.pageSize.getWidth();
-      const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-      doc.save('receipt.pdf');
-    })
-  }
+      const imgWidth = doc.internal.pageSize.getWidth();
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      doc.save('resume.pdf');
+    });
+  };
+  
   useEffect(() => {
     const fetchDataFromFirestore = async () => {
       try {
@@ -54,9 +55,10 @@ export default function ResumeCard() {
       {loading ? (
         <p>Loading...</p>
       ) : (
+
         <div>
           {formsCount > 0 ? (
-            formsFromData.map((resumeData) => (
+            formsFromData.map((resumeData) => (<div>
               <div className="resume-card" key={resumeData.id}>
                 {resumeData && <PersonalFormay userCard={resumeData} />}
                 {resumeData?.workList && resumeData.workList.length > 0 && (
@@ -75,6 +77,7 @@ export default function ResumeCard() {
                     ))}
                   </div>
                 )}
+                </div>
                 <button onClick={downloadPDF}>Download</button>
               </div>
             ))

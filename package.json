@@ -16,6 +16,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.0.38",
     "antd": "^5.13.3",
+    "aos": "^2.3.4",
     "firebase": "^10.7.2",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",

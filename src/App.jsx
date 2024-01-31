@@ -12,7 +12,7 @@ import Resumes from './pages/Resumes'
 import "./App.css"
 
 function App() {
-  const { user } = useContext(userContext);
+  const { user , adminIsIn} = useContext(userContext);
   
   return (
     <BrowserRouter>
@@ -22,7 +22,9 @@ function App() {
         <Route path="/" element={<Home/>} />
           <Route path="/Resume" element={<Resume/>} />
           <Route path="/Resumes" element={<Resumes/>} />
+          {adminIsIn?
             <Route path="/Admin" element={<AdminPage/>} />
+            :null}
       </Routes>
     </BrowserRouter>
 

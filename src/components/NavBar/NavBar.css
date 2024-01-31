@@ -1,16 +1,23 @@
 .NavBar {
-    display: flex;
-    align-items: center;
-    height: 10vh;
-    justify-content: space-around;
-    background-color: #567589;
-    padding: 10px;
-    text-align: center;
-  }
-  
+  font-family:serif;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  justify-content: space-around;
+  background: rgb(124,146,255);
+  background: radial-gradient(circle, rgba(124,146,255,1) 48%, rgba(255,255,255,1) 100%);
+  opacity: 85%;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 10px; 
+  border-top-right-radius: 10px; 
+  position: sticky;
+  top: 0; 
+  z-index: 100; 
+}
   .NavBar a {
     text-decoration: none;
-    color: #fff;
+    color: #00ffdd;
     margin: 0 15px;
     font-size: 16px;
   }
@@ -18,4 +25,7 @@
   .NavBar a:hover {
     text-decoration: underline;
   }
-  
+  .NavBar img {
+    height: 100%;
+    width: 5%;
+  }

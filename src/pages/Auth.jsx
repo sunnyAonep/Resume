@@ -16,7 +16,7 @@ export default function Auth() {
       }
 
   return (
-    <div>
+    <div id='authPage'>
       {signButton?(<Login toggleForm = {toggleForm}/> )
       :(<SignUp toggleForm = {toggleForm}/>)
     }

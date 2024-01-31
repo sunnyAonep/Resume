@@ -7,14 +7,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  #ResumeForm input {
+  /* #ResumeForm input {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;
-  }
+  } */
   
   #ResumeForm h1 {
     font-size: 1.2em;
@@ -129,3 +129,4 @@
     color: #333;
     font-weight: bold;
 }
+

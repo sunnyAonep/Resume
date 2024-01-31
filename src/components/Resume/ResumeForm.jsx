@@ -4,6 +4,8 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import EduList from './EduList';
 import WorkList from './WorkList';
+import { TextField } from '@mui/material'
+import Box from '@mui/material/Box';
 
 
 export default function ResumeForm(props) {
@@ -87,7 +89,7 @@ export default function ResumeForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newResume = { idUser: user.uid, userCard: ResumeData };
+    const newResume = { idUser: user.uid,  ...ResumeData };
      const FormDocRef = await addDoc(docRef, newResume);
     console.log(ResumeData);
   };
@@ -97,10 +99,21 @@ export default function ResumeForm(props) {
       <form id='ResumeForm' onSubmit={handleSubmit}>
         {currentPage === 1 ? (
           <>
-            <input name="Fullname" placeholder='Full Name' id='Name' type="text" onChange={changeContactInfoHandler} />
+            {/* <input name="Fullname" placeholder='Full Name' id='Name' type="text" onChange={changeContactInfoHandler} />
             <input name="about" placeholder='about' id='about' type="text" onChange={changeContactInfoHandler} />
             <input name="phoneNumber" placeholder='0548571145' id='PhoneNumber' type="number" onChange={changeContactInfoHandler} />
-            <input name="email" placeholder='Example@gmail.com' id='Gmail' type="text" onChange={changeContactInfoHandler} />
+            <input name="email" placeholder='Example@gmail.com' id='Gmail' type="text" onChange={changeContactInfoHandler} /> */}
+            <Box
+             sx={{
+               '& > :not(style)': { m: 1, width: '40ch' },
+             }}
+             noValidate
+             autoComplete="off">
+             <TextField id="outlined-basic" label="Full Name" variant="outlined" name="Fullname" onChange={changeContactInfoHandler}/>
+             <TextField id="outlined-basic" label="about" variant="outlined" name="about" onChange={changeContactInfoHandler}/>
+             <TextField id="outlined-basic"  type="number" label="0548571145" variant="outlined" name="phoneNumber" onChange={changeContactInfoHandler}/>
+             <TextField id="outlined-basic" type="email" label="Example@gmail.com" variant="outlined" name="email" onChange={changeContactInfoHandler}/>
+             </Box>
             <button type='button' onClick={nextStage}>next</button>
           </>
         ) : currentPage === 2 ? (
@@ -130,7 +143,10 @@ export default function ResumeForm(props) {
 
           </>
         ) : currentPage === 4 ? (
+          <>
           <button type="submit" >Submit </button>
+          <button type='button' onClick={prevStage}>back</button>
+         </>
           ) : null}
       </form>
     </div>

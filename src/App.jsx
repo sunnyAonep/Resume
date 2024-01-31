@@ -7,14 +7,14 @@ import Home from "./pages/Home"
 import Auth from './pages/Auth'
 import Resume from './pages/Resume'
 import AdminPage from './pages/AdminPage'
-import UserProvider, { userContext } from './context/UserProvider'
+import { userContext } from './context/UserProvider'
 import Resumes from './pages/Resumes'
 import "./App.css"
 
 function App() {
+  const { user } = useContext(userContext);
   
   return (
-    <UserProvider>
     <BrowserRouter>
     <NavBar/>
       <Routes>
@@ -25,7 +25,7 @@ function App() {
             <Route path="/Admin" element={<AdminPage/>} />
       </Routes>
     </BrowserRouter>
-    </UserProvider>
+
   )
 }
 

@@ -40,19 +40,19 @@ export default function AdminCard() {
         <>
           {formsFromData.map((resumeData) => (
             <div className="resume-card" key={resumeData.id}>
-              {resumeData.userCard && <PersonalFormat userCard={resumeData.userCard} />}
-              {resumeData.userCard?.workList && resumeData.userCard.workList.length > 0 && (
+              {resumeData && <PersonalFormat userCard={resumeData} />}
+              {resumeData?.workList && resumeData.workList.length > 0 && (
                 <div>
                   <h3>Work Experience</h3>
-                  {resumeData.userCard.workList.map((workItem, index) => (
+                  {resumeData.workList.map((workItem, index) => (
                     <WorkFormat key={index} userCard={workItem} />
                   ))}
                 </div>
               )}
-              {resumeData.userCard?.eduList && resumeData.userCard.eduList.length > 0 && (
+              {resumeData?.eduList && resumeData.eduList.length > 0 && (
                 <div>
                   <h3>Education</h3>
-                  {resumeData.userCard.eduList.map((eduItem, index) => (
+                  {resumeData.eduList.map((eduItem, index) => (
                     <EduFormat key={index} userCard={eduItem} />
                   ))}
                 </div>

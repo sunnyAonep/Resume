@@ -7,7 +7,7 @@ export default function Resume() {
   return (
     <div id = "myResumeFormPage">
       <div className ="my3D">
-      <Spline scene="https://prod.spline.design/XtCUFy4p8x78CWQT/scene.splinecode" />
+      <Spline scene="https://prod.spline.design/DuraigTjZS88oURA/scene.splinecode" />  
       </div>
       <ResumeForm id = "ResumeForm"/>
     </div>

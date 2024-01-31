@@ -1,0 +1,46 @@
+#Template2 {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #a8a8a8;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 800px;
+  }
+  
+  #Template2 h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5em;
+  }
+  
+  #Template2 p {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  #Template2 h3 {
+    text-align: center;
+    color: #000000;
+    margin-top: 15px;
+  }
+  
+  #Template2 ul {
+    list-style-type:circle;
+    padding: 0;
+  }
+  
+  #Template2 li {
+    margin-bottom: 5px;
+  }
+  
+  #Template2 .eduExp,
+  #Template2 .workExp {
+    margin-top: 15px;
+  }
+  
+  #Template2 .workExp,
+  #Template2 .eduExp {
+    color: #333;
+  }

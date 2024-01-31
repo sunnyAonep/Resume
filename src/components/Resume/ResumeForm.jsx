@@ -6,6 +6,7 @@ import EduList from './EduList';
 import WorkList from './WorkList';
 import { TextField } from '@mui/material'
 import Box from '@mui/material/Box';
+import "./ResumeFome.css"
 
 
 export default function ResumeForm(props) {
@@ -99,10 +100,6 @@ export default function ResumeForm(props) {
       <form id='ResumeForm' onSubmit={handleSubmit}>
         {currentPage === 1 ? (
           <>
-            {/* <input name="Fullname" placeholder='Full Name' id='Name' type="text" onChange={changeContactInfoHandler} />
-            <input name="about" placeholder='about' id='about' type="text" onChange={changeContactInfoHandler} />
-            <input name="phoneNumber" placeholder='0548571145' id='PhoneNumber' type="number" onChange={changeContactInfoHandler} />
-            <input name="email" placeholder='Example@gmail.com' id='Gmail' type="text" onChange={changeContactInfoHandler} /> */}
             <Box
              sx={{
                '& > :not(style)': { m: 1, width: '40ch' },

@@ -1,36 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { collection, getDocs, query } from 'firebase/firestore';
-import { userContext } from '../../context/UserProvider';
-import { db } from '../../config/firebase';
+import React from 'react';
+import "./ResumeFormTemplate.css";
 
-export default function AdminCard() {
-  const { user } = useContext(userContext);
-  const [formsFromData, setFormsFromData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchDataFromFirestore = async () => {
-      try {
-        const q = query(collection(db, 'resume'))
-        const Snapshot = await getDocs(q);
-        const dataFromFirestore = Snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setFormsFromData(dataFromFirestore);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data from Firestore:', error);
-      }
-    };
-
-    if (user) {
-      fetchDataFromFirestore();
-    }
-  }, [user]);
-
+export default function Template1({ userCard }) {
   return (
-    <div>
+    <div id='Template1'>
     <h2>{userCard.Fullname}</h2>
     <p>About: {userCard.about}</p>
     <p>Email: {userCard.email}</p>
@@ -59,5 +32,5 @@ export default function AdminCard() {
       </div>
     )}
   </div>
-  );
+);
 }

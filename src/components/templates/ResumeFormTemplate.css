@@ -1,0 +1,105 @@
+/* .resume-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resume-card .personal-details,
+.resume-card .work-experience,
+.resume-card .education {
+    margin-bottom: 20px;
+}
+
+.resume-card h2,
+.resume-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #4566d3;
+    width: fit-content;
+}
+
+.resume-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.resume-card p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.eduExp,
+.workExp {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+} */
+
+#Template1 {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #Template1 h2,
+  #Template1 h3 {
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #4566d3;
+    width: fit-content;
+  }
+  
+  #Template1 p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  #Template1 p strong {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  #Template1 .eduExp,
+  #Template1 .workExp {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #131010;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  #Template1 .loading,
+  #Template1 .no-data {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  #Template1 .loading {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .no-data {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #666;
+  }
+  

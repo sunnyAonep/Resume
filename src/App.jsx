@@ -18,7 +18,10 @@ function App() {
     <BrowserRouter>
     <NavBar/>
       <Routes>
-        <Route path="/Auth" element={<Auth/>} />
+        
+        {user?
+          <Route path="/Auth" element={<Auth/>} />
+          :null}
         <Route path="/" element={<Home/>} />
           <Route path="/Resume" element={<Resume/>} />
           <Route path="/Resumes" element={<Resumes/>} />

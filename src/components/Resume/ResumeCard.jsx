@@ -1,31 +1,43 @@
-import { useContext, useEffect, useState } from "react";
-import "./ResumeFome.css"
+import React, { useContext, useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { userContext } from "../../context/UserProvider";
-import WorkFormat from "./WorkFormat";
-import EduFormat from "./EduFormat";
-import PersonalFormay from "./PersonalFormay";
+import Template1 from "../templates/Template1";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Template2 from "../templates/Template2";
+import Template3 from "../templates/Template3";
+import tamplateOne from "../../assets/img/templatsImgs/tamplatOne.png"
+import tamplateThree from "../../assets/img/templatsImgs/tamplatThree.png"
+import tamplateTwo from "../../assets/img/templatsImgs/tamplatTwo.png"
+import "./ResumeCard.css"
 
 export default function ResumeCard() {
   const { user } = useContext(userContext);
   const [formsFromData, setFormsFromData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedTemplate, setSelectedTemplate] = useState(1);
 
-  const downloadPDF = () => {
-    const capture = document.querySelector(".resume-card");
-    html2canvas(capture).then((canvas) => {
+  const downloadPDF = async () => {
+    try {
+      const capture = document.querySelector(".resume-card");
+      capture.style.width = "28%";
+      const canvas = await html2canvas(capture);
       const imgData = canvas.toDataURL("image/png");
+      capture.style.width = "100%";
       const doc = new jsPDF('p', 'mm', 'a4');
       const imgWidth = doc.internal.pageSize.getWidth();
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
       doc.save('resume.pdf');
-    });
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
   };
-  
+
+  const chooseTemps = (templateNumber) => {
+    setSelectedTemplate(templateNumber);
+  };
   useEffect(() => {
     const fetchDataFromFirestore = async () => {
       try {
@@ -48,37 +60,62 @@ export default function ResumeCard() {
   }, [user]);
 
   const formsCount = formsFromData.length;
-  console.log(formsCount);
 
   return (
     <>
       {loading ? (
         <p>Loading...</p>
       ) : (
-
         <div>
+          <div className="buttonsTemp">
+          <button
+            onClick={() => chooseTemps(1)}
+            className={`template-button ${selectedTemplate === 1 ? 'selected' : ''}`}
+          >
+            Template 1
+          </button>
+          <button
+            onClick={() => chooseTemps(2)}
+            className={`template-button ${selectedTemplate === 2 ? 'selected' : ''}`}
+          >
+            Template 2
+          </button>
+          <button
+            onClick={() => chooseTemps(3)}
+            className={`template-button ${selectedTemplate === 3 ? 'selected' : ''}`}
+          >
+            Template 3
+          </button>
+          </div>
+          <div className="template-images">
+            <img
+              src={tamplateOne}
+              alt=""
+              className={`template-image ${selectedTemplate === 1 ? 'selected' : ''}`}
+            />
+            <img
+              src={tamplateTwo}
+              alt=""
+              className={`template-image ${selectedTemplate === 2 ? 'selected' : ''}`}
+            />
+            <img
+              src={tamplateThree}
+              alt=""
+              className={`template-image ${selectedTemplate === 3 ? 'selected' : ''}`}
+            />
+          </div>
+
           {formsCount > 0 ? (
-            formsFromData.map((resumeData) => (<div>
-              <div className="resume-card" key={resumeData.id}>
-                {resumeData && <PersonalFormay userCard={resumeData} />}
-                {resumeData?.workList && resumeData.workList.length > 0 && (
-                  <div>
-                    <h3>Work Experience</h3>
-                    {resumeData.workList.map((workItem, index) => (
-                      <WorkFormat key={index} userCard={workItem} />
-                    ))}
-                  </div>
-                )}
-                {resumeData?.eduList && resumeData.eduList.length > 0 && (
-                  <div>
-                    <h3>Education</h3>
-                    {resumeData.eduList.map((eduItem, index) => (
-                      <EduFormat key={index} userCard={eduItem} />
-                    ))}
-                  </div>
-                )}
+            formsFromData.map((resumeData) => (
+              <div>
+              <div key={resumeData.id} className="resume-card">
+                {selectedTemplate === 1 && <Template1 userCard={resumeData} downloadPDF={downloadPDF} />}
+                {selectedTemplate === 2 && <Template2 userCard={resumeData} downloadPDF={downloadPDF} />}
+                {selectedTemplate === 3 && <Template3 userCard={resumeData} downloadPDF={downloadPDF} />}
+              </div>
+                <div className="buttonsTemp">
+                <button onClick={downloadPDF} className="template-button">Download</button>
                 </div>
-                <button onClick={downloadPDF}>Download</button>
               </div>
             ))
           ) : (

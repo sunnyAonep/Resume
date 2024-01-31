@@ -24,7 +24,7 @@
   background-color: #45a049;
 }
 
-  .resume-card {
+  /* .resume-card {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -58,15 +58,15 @@
     font-weight: bold;
 }
 
-#eduExp,
-#workExp {
+.eduExp,
+.workExp {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;
-}
+} */
 
 .loading {
     text-align: center;

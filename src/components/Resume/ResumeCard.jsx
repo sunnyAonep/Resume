@@ -18,22 +18,21 @@ export default function ResumeCard() {
   const [loading, setLoading] = useState(true);
   const [selectedTemplate, setSelectedTemplate] = useState(1);
 
-  const downloadPDF = async () => {
-    try {
-      const capture = document.querySelector(".resume-card");
-      capture.style.width = "28%";
-      const canvas = await html2canvas(capture);
-      const imgData = canvas.toDataURL("image/png");
-      capture.style.width = "100%";
+
+   const downloadPDF = (e) =>{
+    console.log(e.target.class);
+    console.log(e.target.className);
+    const capture = document.querySelector(`.${e.target.className}`);
+    console.log();
+    html2canvas(capture).then((canvas)=>{
+      const imgData = canvas.toDataURL('img/png');
       const doc = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = doc.internal.pageSize.getWidth();
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      doc.save('resume.pdf');
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-    }
-  };
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      doc.save('receipt.pdf');
+    })
+  }
 
   const chooseTemps = (templateNumber) => {
     setSelectedTemplate(templateNumber);
@@ -66,7 +65,7 @@ export default function ResumeCard() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <>
           <div className="buttonsTemp">
           <button
             onClick={() => chooseTemps(1)}
@@ -107,21 +106,21 @@ export default function ResumeCard() {
 
           {formsCount > 0 ? (
             formsFromData.map((resumeData) => (
-              <div>
-              <div key={resumeData.id} className="resume-card">
+              <>
+              <div className={`${resumeData.id}`}>
                 {selectedTemplate === 1 && <Template1 userCard={resumeData} downloadPDF={downloadPDF} />}
                 {selectedTemplate === 2 && <Template2 userCard={resumeData} downloadPDF={downloadPDF} />}
                 {selectedTemplate === 3 && <Template3 userCard={resumeData} downloadPDF={downloadPDF} />}
               </div>
-                <div className="buttonsTemp">
-                <button onClick={downloadPDF} className="template-button">Download</button>
+                <div className={`buttonsTemp`} >
+                <button onClick={downloadPDF} className={`${resumeData.id}`} cFlassName="template-button">Download</button>
                 </div>
-              </div>
+              </>
             ))
           ) : (
             <p>No data available</p>
           )}
-        </div>
+        </>
       )}
     </>
   );

@@ -3,7 +3,7 @@ import "./TemplateThree.css";
 
 export default function Template3({ userCard }) {
   return (
-    <div id='Template3'>
+    <div className='Template3'>
       <h2>{userCard.Fullname}</h2>
       <p>About: {userCard.about}</p>
       <p>Email: {userCard.email}</p>

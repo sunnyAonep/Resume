@@ -28,7 +28,7 @@ export default function Login(props) {
       </Box>
         <button type="submit">Login</button>
       </form>
-      <p>Already have an account? <Link to="/Auth" onClick={props.toggleForm}>Login</Link></p>
+      <p>Already have an account? <Link to="/" onClick={props.toggleForm}>Login</Link></p>
     </div>
   )
 }

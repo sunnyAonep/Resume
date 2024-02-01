@@ -3,6 +3,9 @@ import React, { useContext, useEffect } from 'react'
 import SingUpPhoto from "../assets/img/Sign-Up.png"
 import DownloadPhoto from "../assets/img/download.png"
 import WriteResumePhoto from "../assets/img/write-resume.png"
+import instegram from "../assets/img/icons/instegram.png"
+import Git from "../assets/img/icons/Git.png"
+import Linkedin from "../assets/img/icons/Linkedin.png"
 import { Link } from 'react-router-dom'
 import { userContext } from '../context/UserProvider'
 import { Button } from '@mui/material'
@@ -41,16 +44,19 @@ export default function Home() {
           <img src={DownloadPhoto} alt="Download Resume" />
         </div>
         <br />
-        {!user ? <Link to="/Auth"><Button color="secondary" variant="outlined" data-aos="fade-down">Get Started</Button></Link> : null}
+        {!user ? <Link to="/"><Button color="secondary" variant="outlined" data-aos="fade-down">Get Started</Button></Link> : null}
       </section>
     
-      <section id="latest-articles" data-aos="fade-right">
+      {/* <section id="latest-articles" data-aos="fade-right">
         <h2>Latest Articles</h2>
         <p>Check out our blog for valuable tips on creating an impressive resume and advancing your career.</p>
-      </section>
+      </section> */}
     
       <footer id="footer">
-        <p>Contact us at: <a href="mailto:info@yourresumebuilder.com">info@yourresumebuilder.com</a></p>
+        <p>Contact us at: <a href="mailto:arbiv.sunny@gmail.com">arbiv.sunny@gmail.com</a></p>
+        <img src={Git} className='iconImgs'  />
+        <img src={Linkedin} className='iconImgs'  />
+        <img src={instegram} className='iconImgs'  />
       </footer>
     </div>
     </div>

@@ -3,7 +3,7 @@ import "./ResumeFormTemplate.css";
 
 export default function Template1({ userCard }) {
   return (
-    <div id='Template1'>
+    <div className='Template1'>
     <h2>{userCard.Fullname}</h2>
     <p>About: {userCard.about}</p>
     <p>Email: {userCard.email}</p>

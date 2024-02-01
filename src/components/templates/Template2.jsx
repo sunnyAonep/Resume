@@ -2,7 +2,7 @@ import React from 'react';
 import "./TemplateTwo.css";
 export default function Template2({ userCard }) {
   return (
-    <div id='Template2'>
+    <div className='Template2'>
     <h2>{userCard.Fullname}</h2>
     <p>About: {userCard.about}</p>
     <p>Email: {userCard.email}</p>

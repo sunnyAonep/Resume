@@ -13,7 +13,7 @@ export default function SignUp(props) {
       AOS.init();
     }, [])
   return (
-    <div className="form-container" data-aos="flip-right">
+    <div className="form-container" data-aos="flip-left">
     <form onSubmit={handleSignUp}>
     <Box
       sx={{
@@ -24,11 +24,11 @@ export default function SignUp(props) {
     >
       <TextField id="outlined-basic"  type="email" label="email" variant="outlined" name="Email" onChange={handleEmailChange}/>
       <TextField id="outlined-basic" type="password" label="password" variant="outlined" name="password" onChange={handlePasswordChange}/>
-      <TextField id="outlined-basic" type="password" label="password" variant="outlined" name="password" onChange={handlePasswordChange}/>
+      {/* <TextField id="outlined-basic" type="password" label="password" variant="outlined" name="password" onChange={handlePasswordChange}/> */}
       </Box>
       <button type="submit" >Sign Up</button>
     </form>
-    <p>Already have an account? <Link to="/Auth" onClick={props.toggleForm}>SignUp</Link></p>
+    <p>Already have an account? <Link to="/" onClick={props.toggleForm}>SignUp</Link></p>
   </div>
   )
 }

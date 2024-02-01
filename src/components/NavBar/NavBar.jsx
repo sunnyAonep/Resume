@@ -18,9 +18,9 @@ export default function NavBar() {
           <Link to="/Admin">Admin</Link>
         :null
         }
-        <button onClick={handleSignOut}>Sign-Out</button></>)
-        :(<><Link to="/">Home</Link>
-        <Link to="/Auth">Auth</Link></>)
+        <Link to="/"><button onClick={handleSignOut} className='Sign-button'>Sign-Out</button></Link></>)
+        :(<><Link to="/home">Home</Link>
+        <Link to="/">Auth</Link></>)
         }    
     </nav>
   )

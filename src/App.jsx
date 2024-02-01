@@ -19,12 +19,15 @@ function App() {
     <NavBar/>
       <Routes>
         
-        {user?
-          <Route path="/Auth" element={<Auth/>} />
-          :null}
-        <Route path="/" element={<Home/>} />
+        {!user?
+        <>
+          <Route path="/" element={<Auth/>} />
+          <Route path="/home" element={<Home/>} />
+          </>
+          :
+          <><Route path="/" element={<Home/>} />
           <Route path="/Resume" element={<Resume/>} />
-          <Route path="/Resumes" element={<Resumes/>} />
+          <Route path="/Resumes" element={<Resumes/>}/></>}
           {adminIsIn?
             <Route path="/Admin" element={<AdminPage/>} />
             :null}
